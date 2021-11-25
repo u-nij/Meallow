@@ -4,20 +4,22 @@ import OnBoardingSelected from '../../components/OnBoarding1Seleted';
 import OnBoardingListFooter from '../../components/OnBoardingListFooter';
 
 const OnBoarding1Screen = () => {
-  const [dataSource, setDataSource] = useState([
-    { id: 1, title: '쌀' },
-    { id: 2, title: '밀가루' },
-    { id: 3, title: '달걀/유제품' },
-    { id: 4, title: '김치' },
-    { id: 5, title: '생선' },
-    { id: 6, title: '해산물' },
-    { id: 7, title: '소고기' },
-    { id: 8, title: '돼지고기' },
-    { id: 9, title: '닭고기' },
-    { id: 10, title: '버섯' },
-    { id: 11, title: '콩/두부' },
-    { id: 12, title: '과일' },
+  const [items, setItems] = useState([
+    { id: 0, title: '쌀', selected: false },
+    { id: 1, title: '밀가루', selected: false },
+    { id: 2, title: '달걀/유제품', selected: false },
+    { id: 3, title: '김치', selected: false },
+    { id: 4, title: '생선', selected: false },
+    { id: 5, title: '해산물', selected: false },
+    { id: 6, title: '소고기', selected: false },
+    { id: 7, title: '돼지고기', selected: false },
+    { id: 8, title: '닭고기', selected: false },
+    { id: 9, title: '버섯', selected: false },
+    { id: 10, title: '콩/두부', selected: false },
+    { id: 11, title: '과일', selected: false },
   ]);
+
+  const [selected, setSelected] = useState([]);
 
   const onBackPressed = () => {
     alert("Back");
@@ -27,23 +29,26 @@ const OnBoarding1Screen = () => {
     alert("next");
   };
 
-  const onSelectCancelPressed = () => {
-    alert("cancel");
+  const onItemPressed = (item) => {
+    items[item.id].selected = true;
+    setSelected(selected => [...selected, item]);
   };
 
-  const getItem = (item) => {
-    alert(item.title);
+  const onSelectCancelPressed = (itemId) => {
+    items[itemId].selected = false;
+    setSelected(selected => selected.filter(item => item.id !== itemId))
   };
 
   const ItemList = ({itemList}) => {
     return (
       <ScrollView style={styles.itemListStyle} >
-        {itemList.map( (item) => (
+        {itemList.map((item) => (
           <TouchableOpacity
-            onPress={() => getItem(item)}
+            onPress={() => onItemPressed(item)}
+            key={item.id}
             style={styles.itemStyle}
             activeOpacity={0.7}>
-            <Text style={styles.itemTextStyle}>
+            <Text style={ item.selected ? styles.itemTextStyle_SELECTED : styles.itemTextStyle}>
               {item.title}
             </Text>
             <Image
@@ -71,9 +76,9 @@ const OnBoarding1Screen = () => {
         <Text style={styles.textDescriptionStyle}>'밀로'님이 선호하는</Text>
         <Text style={styles.textDescriptionStyle}>집밥 메뉴는 어떤건가요? (최대 3개)</Text>
         <View style={styles.SeletedContainerStyle}>
-          {/* 기본 42 -> 한 글자마다 + 13 */}
-          <OnBoardingSelected onPress={onSelectCancelPressed} text="쌀" width={55} />
-          <OnBoardingSelected onPress={onSelectCancelPressed} text="돼지고기" width={94} />
+          {selected.map((item) => (
+            <OnBoardingSelected key={item.id} onPress={() => onSelectCancelPressed(item.id)} text={item.title} width={42 + 13 * item.title.length} />
+          ))}
         </View>
       </View>
     );
@@ -88,7 +93,7 @@ const OnBoarding1Screen = () => {
   return (
     <View style={styles.container}>
       <ListHeader />
-      <ItemList itemList={dataSource} />
+      <ItemList itemList={items} />
       <ListFooter />
     </View>
   );
@@ -117,6 +122,12 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     color: '#AAAAAA',
+  },
+  itemTextStyle_SELECTED: {
+    flex: 1,
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: '#000000',
   },
   itemImageIconStyle: {
     width: 17,

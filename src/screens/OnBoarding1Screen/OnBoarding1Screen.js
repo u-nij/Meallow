@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
-import CustomButton from '../../components/CustomButton';
+import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import OnBoardingSelected from '../../components/OnBoarding1Seleted';
+import OnBoardingListFooter from '../../components/OnBoardingListFooter';
 
 const OnBoarding1Screen = () => {
   const [dataSource, setDataSource] = useState([
@@ -35,27 +35,24 @@ const OnBoarding1Screen = () => {
     alert(item.title);
   };
 
-  const ItemView = ({ item }) => {
+  const ItemList = ({itemList}) => {
     return (
-      <TouchableOpacity
-        onPress={() => getItem(item)}
-        style={styles.itemStyle}
-        activeOpacity={0.7}
-      >
-        <Text style={styles.itemTextStyle}>
-          {item.title}
-        </Text>
-        <Image
-          source={require('../../../assets/done_black_24dp.png')}
-          style={styles.itemImageIconStyle}
-        />
-      </TouchableOpacity>
-    );
-  };
-
-  const ItemSeparatorView = () => {
-    return (
-      <View style={{height: 40}} />
+      <ScrollView style={styles.itemListStyle} >
+        {itemList.map( (item) => (
+          <TouchableOpacity
+            onPress={() => getItem(item)}
+            style={styles.itemStyle}
+            activeOpacity={0.7}>
+            <Text style={styles.itemTextStyle}>
+              {item.title}
+            </Text>
+            <Image
+              source={require('../../../assets/done_black_24dp.png')}
+              style={styles.itemImageIconStyle}
+            />
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
     );
   };
 
@@ -84,39 +81,15 @@ const OnBoarding1Screen = () => {
 
   const ListFooter = () => {
     return (
-      <View style={styles.footerStyle}>
-        <TouchableOpacity
-          style={styles.buttonBackStyle}
-          onPress={onBackPressed}
-          activeOpacity={0.7}
-        >
-          <Image
-            source={require('../../../assets/arrow_back_ios_black_24dp.png')}
-            style={styles.buttonImageIconStyle}
-          />
-        </TouchableOpacity>
-        <CustomButton
-          onPress={onNextPressed}
-          text="다음"
-          fontSize={46.83}
-          bgColor="#363636"
-          width={749.27}
-          height={152}
-        />
-      </View>
+      <OnBoardingListFooter onBackPressed={onBackPressed} onNextPressed={onNextPressed} />
     );
   };
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={dataSource}
-        keyExtractor={(item, index) => index.toString()}
-        ItemSeparatorComponent={ItemSeparatorView}
-        ListHeaderComponent={ListHeader}
-        ListFooterComponent={ListFooter}
-        renderItem={ItemView}
-      />
+      <ListHeader />
+      <ItemList itemList={dataSource} />
+      <ListFooter />
     </View>
   );
 };
@@ -127,12 +100,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 73,
   },
 
+  itemListStyle: {
+    height: 1200,
+  },
+
   itemStyle: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     height: 80,
+    marginBottom: 40,
   },
   itemTextStyle: {
     flex: 1,
@@ -178,27 +156,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 42,
-  },
-
-  footerStyle: {
-    width: '100%',
-    height: 400,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonBackStyle: {
-    backgroundColor: '#C4C4C4',
-    width: 152,
-    height: 152,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 32,
-    marginRight: 32,
-  },
-  buttonImageIconStyle: {
-    width: 58.54,
-    height: 58.54,
   },
 });
 

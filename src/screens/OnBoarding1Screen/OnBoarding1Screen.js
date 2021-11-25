@@ -71,9 +71,9 @@ const OnBoarding1Screen = () => {
         <Text style={styles.textDescriptionStyle}>'밀로'님이 선호하는</Text>
         <Text style={styles.textDescriptionStyle}>집밥 메뉴는 어떤건가요? (최대 3개)</Text>
         <View style={styles.SeletedContainerStyle}>
-          {/* 기본 123 -> 한 글자마다 + 40 */}
-          <OnBoardingSelected onPress={onSelectCancelPressed} text="쌀" width={163} />
-          <OnBoardingSelected onPress={onSelectCancelPressed} text="돼지고기" width={283} />
+          {/* 기본 42 -> 한 글자마다 + 13 */}
+          <OnBoardingSelected onPress={onSelectCancelPressed} text="쌀" width={55} />
+          <OnBoardingSelected onPress={onSelectCancelPressed} text="돼지고기" width={94} />
         </View>
       </View>
     );
@@ -96,12 +96,12 @@ const OnBoarding1Screen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 128,
-    marginHorizontal: 73,
+    marginTop: 35,
+    marginHorizontal: 25,
   },
 
   itemListStyle: {
-    height: 1200,
+    height: 365,
   },
 
   itemStyle: {
@@ -109,53 +109,52 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 80,
-    marginBottom: 40,
+    height: 25,
+    marginBottom: 10,
   },
   itemTextStyle: {
     flex: 1,
-    fontSize: 52.68,
+    fontSize: 17,
     fontWeight: 'bold',
     color: '#AAAAAA',
   },
   itemImageIconStyle: {
-    width: 50,
-    height: 50,
+    width: 17,
+    height: 17,
   },
 
   headerStyle: {
     width: '100%',
-    height: 723,
+    height: 250,
   },
   headerBarContainerStyle: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 126,
-    marginBottom: 135,
+    marginTop: 50,
+    marginBottom: 45,
   },
   headerBarStyle: {
-    width: 275.12,
-    height: 11,
-    flex: 0.33,
+    height: 4,
+    flex: 0.3,
     borderRadius: 1,
-    marginHorizontal: 6.5,
     backgroundColor: '#F1F1F1',
   },
 
   textStepStyle: {
-    fontSize: 46.83,
+    fontSize: 17,
     fontWeight: 'bold',
     color: '#FF9069',
-    marginBottom: 27,
+    marginBottom: 10,
   },
   textDescriptionStyle: {
-    fontSize: 58.54,
+    fontSize: 19,
     fontWeight: 'bold',
   },
   SeletedContainerStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 42,
+    marginTop: 14,
   },
 });
 

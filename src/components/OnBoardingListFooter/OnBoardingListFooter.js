@@ -18,10 +18,10 @@ const OnBoardingListFooter = ({onBackPressed, onNextPressed}) => {
       <CustomButton
         onPress={onNextPressed}
         text="다음"
-        fontSize={46.83}
+        fontSize={16}
         bgColor="#363636"
-        width={749.27}
-        height={152}
+        width={250}
+        height={50}
       />
     </View>
   );
@@ -30,23 +30,23 @@ const OnBoardingListFooter = ({onBackPressed, onNextPressed}) => {
 const styles = StyleSheet.create({
   footerStyle: {
     width: '100%',
-    height: 400,
+    height: 100,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonBackStyle: {
     backgroundColor: '#C4C4C4',
-    width: 152,
-    height: 152,
+    width: 50,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 32,
-    marginRight: 32,
+    borderRadius: 10,
+    marginRight: 13,
   },
   buttonImageIconStyle: {
-    width: 58.54,
-    height: 58.54,
+    width: 20,
+    height: 20,
   },
 });
 

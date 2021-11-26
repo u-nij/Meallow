@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Text } from 'react-native';
 
-function Header() {
+function Header( {title} ) {
     return (
         <View style={styles.header}>
-            <Image source={require('../../assets/meallow_logo.png')} style={styles.logo}/>
+            {title && <Text style={styles.title}>{title}</Text>}
+            {!title && <Image source={require('../../assets/meallow_logo.png')} style={styles.logo}/>}
         </View>
     );
 }
@@ -23,6 +24,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         flexDirection: 'row',
     },
+    title: {
+        alignSelf: 'center',
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: "#000",
+        borderBottomWidth: self.width,
+    }
 });
   
 export default Header;

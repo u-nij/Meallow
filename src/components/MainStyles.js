@@ -11,6 +11,12 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginBottom: 30,
     },
+    banner_img_recipe: {
+        width: "90%",
+        height: 80,
+        resizeMode: 'contain',
+        alignSelf: 'center',
+    },
     banner_button: {
         height: 30,
         width: 85,
@@ -24,6 +30,13 @@ const styles = StyleSheet.create({
     component_layout: {
         margin: 20,
     },
+    vertical_img_layout: {
+        marginVertical: 0, 
+        backgroundColor: '#fff', 
+        flexDirection:'row', 
+        flexWrap: 'wrap', 
+        justifyContent:'space-between'
+    },
     layout_title: {
         fontSize: 18,
         fontWeight: 'bold',
@@ -33,6 +46,14 @@ const styles = StyleSheet.create({
     image_wrapper: {
         height: 200,
         width: 160,
+        overflow: 'hidden',
+        borderRadius: 10,
+        backgroundColor: 'coral',
+        marginBottom: 5,
+    },
+    image_wrapper_vertical: {
+        height: 180,
+        width: 150,
         overflow: 'hidden',
         borderRadius: 10,
         backgroundColor: 'coral',

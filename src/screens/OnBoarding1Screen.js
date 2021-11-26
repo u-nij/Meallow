@@ -101,8 +101,9 @@ const OnBoarding1Screen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 35,
-    marginHorizontal: 25,
+    paddingTop: 35,
+    paddingHorizontal: 25,
+    backgroundColor: '#FFFFFF',
   },
 
   itemListStyle: {

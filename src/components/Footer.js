@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 
 import IconButton from './IconButton';
 
@@ -16,7 +16,10 @@ function Footer() {
         <View style={styles.footer}>
             <IconButton type={types.home}></IconButton>
             <IconButton type={types.recipe}></IconButton>
-            <IconButton type={types.qr_code}></IconButton>
+            <TouchableOpacity activeOpacity={0.8} style={styles.button_wrapper}>
+              <Image source={types.qr_code} style={styles.button_image}></Image>
+            </TouchableOpacity>
+            <IconButton></IconButton>
             <IconButton type={types.subscribe}></IconButton>
             <IconButton type={types.my_page}></IconButton>
         </View>
@@ -31,7 +34,21 @@ const styles = StyleSheet.create({
         height: 90,
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 10,
+    },
+    button_wrapper: {
+      flex: 1,
+      margin: 5,
+      height: '60%',
+      maxWidth: '20%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      position: 'absolute',
+      top: '-25%',
+      left: '45%',
+    },
+    button_image: {
+        height: '100%',
+        resizeMode: 'contain',
     },
 });
   

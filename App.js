@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="OnBoarding" screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName="Recipe" screenOptions={{headerShown: false}}>
         <Stack.Screen name="MainRecommended">
           {props => <MainLayout user_name={''} header footer recommended></MainLayout>}
         </Stack.Screen>

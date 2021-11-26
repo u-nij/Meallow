@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { View, ScrollView, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, ScrollView, Image, TouchableOpacity, ImageBackground, Text } from 'react-native';
 import styles from '../components/MainStyles';
 import { useNavigation } from '@react-navigation/native';
 import VerticalItem from '../components/VerticalItem';
@@ -44,6 +43,8 @@ export default function Recipe() {
       if(selected !== hashtagId)
         setSelected(selected => hashtagId);
     };
+  
+    const items = selected ? recipes2 : recipes1;
 
     return (
         <ScrollView style={styles.default}>
@@ -54,7 +55,18 @@ export default function Recipe() {
                 ))}
              </ScrollView>
             <View style={[styles.component_layout, {margin: 20}]}>
-                <VerticalItem items={selected ? recipes2 : recipes1}></VerticalItem>
+                <View style={styles.vertical_img_layout}>
+                    {recipes.map((item) => (
+                        (<TouchableOpacity key={item.name} style={{marginBottom: 30}} activeOpacity={0.8}
+                            onPress={() => alert('레시피 상세 페이지로 이동합니다.')}>
+                            <View style={styles.image_wrapper_vertical}>
+                                <ImageBackground source={item.image} style={styles.item_image} />
+                            </View>
+                            <Text style={styles.item_name}>{item.name}</Text>
+                            <Text style={styles.item_name}>{item.price}</Text>
+                        </TouchableOpacity>)
+                    ))}
+                </View>
             </View>
         </ScrollView>
     );

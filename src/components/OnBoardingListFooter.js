@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Image, StyleSheet } from 'react-native';
-import CustomButton from '../CustomButton';
+import CustomButton from './CustomButton';
 
 const OnBoardingListFooter = ({onBackPressed, onNextPressed}) => {
   return (
@@ -11,7 +11,7 @@ const OnBoardingListFooter = ({onBackPressed, onNextPressed}) => {
         activeOpacity={0.7}
       >
         <Image
-          source={require('../../../assets/arrow_back_ios_black_24dp.png')}
+          source={require('../../assets/arrow_back_ios_black_24dp.png')}
           style={styles.buttonImageIconStyle}
         />
       </TouchableOpacity>

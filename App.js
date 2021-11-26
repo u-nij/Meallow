@@ -1,6 +1,6 @@
 import * as React from 'react';
 import MainLayout from './src/components/MainLayout'
-import OnBoarding from './src/screens/OnBoarding1Screen';
+import OnBoarding from './src/screens/OnBoarding3Screen';
 import SocialLogin from './src/screens/SocialLogin';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator  } from '@react-navigation/stack';
@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Recipe" screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName="OnBoarding" screenOptions={{headerShown: false}}>
         <Stack.Screen name="MainRecommended">
           {props => <MainLayout user_name={''} header footer recommended></MainLayout>}
         </Stack.Screen>

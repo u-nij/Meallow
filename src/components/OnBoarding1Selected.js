@@ -16,7 +16,7 @@ const OnBoarding1Selected = ({onPress, text, width}) => {
           {text}
         </Text>
         <Image
-          source={require('../../../assets/close_black_24dp.png')}
+          source={require('../../assets/close_black_24dp.png')}
           style={styles.buttonImageIconStyle}
         />
       </TouchableOpacity>

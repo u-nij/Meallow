@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
-import OnBoardingListFooter from '../../components/OnBoardingListFooter';
-import ItemImage1 from '../../../assets/OnBoardingStep2(1).png';
-import ItemImage2 from '../../../assets/OnBoardingStep2(2).png';
-import ItemImage3 from '../../../assets/OnBoardingStep2(3).png';
-import ItemImageGray1 from '../../../assets/OnBoardingStep2(1)_Gray.png';
-import ItemImageGray2 from '../../../assets/OnBoardingStep2(2)_Gray.png';
-import ItemImageGray3 from '../../../assets/OnBoardingStep2(3)_Gray.png';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import OnBoardingListFooter from '../components/OnBoardingListFooter';
+import ItemImage from '../../assets/OnBoardingStep3.png';
+import ItemImageGray from '../../assets/OnBoardingStep3_Gray.png';
 
-const OnBoarding2Screen = () => {
+const OnBoarding3Screen = () => {
   const [items, setItems] = useState([
-    { id: 0, title: '영양가득 집밥', description: '영양소 균형이 잘 잡힌 건강집밥', img: ItemImage1,  img_gray: ItemImageGray1 },
-    { id: 1, title: '든든한 집밥', description: '먹으면 헛배부리지 않는 든든집밥', img: ItemImage2, img_gray: ItemImageGray2 },
-    { id: 2, title: '간편한 집밥', description: '쉽고 빠르게 먹을 수 있는 간편집밥', img: ItemImage3, img_gray: ItemImageGray3 },
+    { id: 0, title: '아침' },
+    { id: 1, title: '점심' },
+    { id: 2, title: '저녁' },
   ]);
 
   const [selected, setSelected] = useState([]);
@@ -34,7 +30,7 @@ const OnBoarding2Screen = () => {
 
   const ItemList = ({itemList}) => {
     return (
-      <ScrollView style={styles.itemListStyle} >
+      <View style={styles.itemListStyle} >
         {itemList.map((item) => (
           <TouchableOpacity
             onPress={() => onItemPressed(item.id)}
@@ -42,20 +38,15 @@ const OnBoarding2Screen = () => {
             style={selected.indexOf(item.id) > -1 ? styles.itemStyle_SELECTED : styles.itemStyle}
             activeOpacity={0.7}>
             <Image
-              source={selected.indexOf(item.id) > -1 ? item.img : item.img_gray}
+              source={selected.indexOf(item.id) > -1 ? ItemImage : ItemImageGray}
               style={styles.itemImageIconStyle}
             />
-            <View>
-              <Text style={selected.indexOf(item.id) > -1 ? styles.itemTitleTextStyle_SELECTED : styles.itemTitleTextStyle}>
+            <Text style={selected.indexOf(item.id) > -1 ? styles.itemTextStyle_SELECTED : styles.itemTextStyle}>
                 {item.title}
-              </Text>
-              <Text style={selected.indexOf(item.id) > -1 ? styles.itemDescTextStyle_SELECTED : styles.itemDescTextStyle}>
-                {item.description}
-              </Text>
-            </View>
+            </Text>
           </TouchableOpacity>
         ))}
-      </ScrollView>
+      </View>
     );
   };
 
@@ -70,9 +61,9 @@ const OnBoarding2Screen = () => {
           ]} />
           <View style={styles.headerBarStyle} />
         </View>
-        <Text style={styles.textStepStyle}>Step2</Text>
-        <Text style={styles.textDescriptionStyle}>'밀로'님이 선호하는</Text>
-        <Text style={styles.textDescriptionStyle}>집밥 스타일은 무엇인가요?</Text>
+        <Text style={styles.textStepStyle}>Step3</Text>
+        <Text style={styles.textDescriptionStyle}>'밀로'님이 챙기고 싶은</Text>
+        <Text style={styles.textDescriptionStyle}>끼니는 언제인가요?</Text>
       </View>
     );
   };
@@ -100,57 +91,38 @@ const styles = StyleSheet.create({
 
   itemListStyle: {
     height: 365,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingBottom: 100,
   },
 
   itemStyle: {
-    flex: 1,
-    flexDirection: 'row',
+    flex: 0.3,
     alignItems: 'center',
-    height: 70,
-    marginBottom: 15,
-    paddingLeft: 25,
-    borderWidth: 1,
-    borderColor: '#E5E5E5',
-    borderRadius: 15,
+    height: 160,
   },
   itemStyle_SELECTED: {
-    flex: 1,
-    flexDirection: 'row',
+    flex: 0.3,
     alignItems: 'center',
-    height: 70,
-    marginBottom: 15,
-    paddingLeft: 25,
-    borderWidth: 1,
-    borderColor: '#E5E5E5',
-    borderRadius: 15,
-    backgroundColor: '#FF9069',
+    height: 160,
   },
-  itemTitleTextStyle: {
-    fontSize: 16,
+  itemTextStyle: {
+    fontSize: 17,
     fontWeight: 'bold',
     color: '#AAAAAA',
     marginBottom: 3,
   },
-  itemTitleTextStyle_SELECTED: {
-    fontSize: 16,
+  itemTextStyle_SELECTED: {
+    fontSize: 17,
     fontWeight: 'bold',
-    color: '#363636',
+    color: '#FF9069',
     marginBottom: 3,
-  },
-  itemDescTextStyle: {
-    fontSize: 13,
-    fontWeight: 'bold',
-    color: '#AAAAAA',
-  },
-  itemDescTextStyle_SELECTED: {
-    fontSize: 13,
-    fontWeight: 'bold',
-    color: '#363636',
   },
   itemImageIconStyle: {
-    width: 45,
-    height: 45,
-    marginRight: 20,
+    width: 30,
+    height: 71.4,
+    marginBottom: 20,
   },
 
   headerStyle: {
@@ -188,4 +160,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OnBoarding2Screen;
+export default OnBoarding3Screen;

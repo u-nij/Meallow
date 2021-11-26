@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
-import OnBoardingSelected from '../../components/OnBoarding1Seleted';
-import OnBoardingListFooter from '../../components/OnBoardingListFooter';
+import OnBoardingSelected from '../components/OnBoarding1Selected';
+import OnBoardingListFooter from '../components/OnBoardingListFooter';
 
 const OnBoarding1Screen = () => {
   const [items, setItems] = useState([
@@ -52,7 +52,7 @@ const OnBoarding1Screen = () => {
               {item.title}
             </Text>
             <Image
-              source={require('../../../assets/done_black_24dp.png')}
+              source={require('../../assets/done_black_24dp.png')}
               style={styles.itemImageIconStyle}
             />
           </TouchableOpacity>

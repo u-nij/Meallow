@@ -55,11 +55,11 @@ const OnBoarding3Screen = () => {
       <View style={styles.headerStyle}>
         <View style={styles.headerBarContainerStyle}>
           <View style={styles.headerBarStyle} />
+          <View style={styles.headerBarStyle} />
           <View style={[
             styles.headerBarStyle,
             {backgroundColor: '#363636'},
           ]} />
-          <View style={styles.headerBarStyle} />
         </View>
         <Text style={styles.textStepStyle}>Step3</Text>
         <Text style={styles.textDescriptionStyle}>'밀로'님이 챙기고 싶은</Text>
@@ -85,8 +85,9 @@ const OnBoarding3Screen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 35,
-    marginHorizontal: 25,
+    paddingTop: 35,
+    paddingHorizontal: 25,
+    backgroundColor: '#FFFFFF',
   },
 
   itemListStyle: {

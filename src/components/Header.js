@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View, Image, Text } from 'react-native';
 
 function Header( {title} ) {
-    console.log(title);
     return (
         <View style={styles.header}>
             {title && <Text style={styles.title}>{title}</Text>}

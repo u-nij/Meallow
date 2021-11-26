@@ -1,5 +1,6 @@
 import * as React from 'react';
-import MainLayout from './src/components/MainLayout'
+import MainLayout from './src/components/MainLayout';
+import RecipeDetail from './src/screens/RecipeDetail';
 import OnBoarding1 from './src/screens/OnBoarding1Screen';
 import OnBoarding2 from './src/screens/OnBoarding2Screen';
 import OnBoarding3 from './src/screens/OnBoarding3Screen';
@@ -27,6 +28,7 @@ export default function App() {
         <Stack.Screen name="PurchaseDetails">
           {props => <PurchaseDetails content='information'></PurchaseDetails>}
         </Stack.Screen>
+        <Stack.Screen name="RecipeDetail" component={RecipeDetail}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

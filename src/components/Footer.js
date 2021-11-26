@@ -25,10 +25,10 @@ function Footer() {
 
 const styles = StyleSheet.create({
     footer: {
-        borderTopWidth: 3 ,
+        borderTopWidth: 1,
         borderColor: '#bbb',
         width: '100%',
-        height: 100,
+        height: 90,
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 10,

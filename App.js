@@ -8,8 +8,6 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    // <MainLayout user_name={'유진'} header footer recommended></MainLayout>
-    // <OnBoarding />
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Recipe" screenOptions={{headerShown: false}}>
         <Stack.Screen name="MainRecommended">

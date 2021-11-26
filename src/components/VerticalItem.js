@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './MainStyles';
-import { View, ImageBackground, TouchableOpacity, Text, ScrollView } from 'react-native';
+import { View, ImageBackground, TouchableOpacity, Text } from 'react-native';
 
 const VerticalItem = ({ items }) => (
     <View style={styles.vertical_img_layout}>

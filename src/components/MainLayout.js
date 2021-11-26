@@ -11,9 +11,13 @@ import Recipe from '../screens/Recipe';
 
 const MainLayout = ( {user_name, header, footer, best, recommended, recipe} ) => {
     
-    let title = '';
+    let title = null;
+    let menu = '';
     if (recipe) {
         title = '레시피';
+        menu = 'recipe';
+    } else if (best || recommended) {
+        menu = 'home';
     }
 
     return (
@@ -22,8 +26,8 @@ const MainLayout = ( {user_name, header, footer, best, recommended, recipe} ) =>
             {header && <Header title={title}/>}
             {recommended && <MainRecommended user_name={user_name} />}
             {best && <MainBest user_name={user_name} />}
-            {recipe && <Recipe user_name={"Recipe"}/>}
-            {footer && <Footer />}
+            {recipe && <Recipe />}
+            {footer && <Footer menu={menu} />}
         </View>
     );
 };

@@ -6,7 +6,7 @@ const HorizontalItem = ({ items }) => (
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <View style={{flexDirection: 'row', marginVertical: 30}}>
             {items.map((item) => (
-                <TouchableOpacity style={{marginRight: 30}} activeOpacity={0.8}>
+                <TouchableOpacity key={item.name} style={{marginRight: 30}} activeOpacity={0.8}>
                     <View style={styles.image_wrapper}>
                         <ImageBackground source={item.image} style={styles.item_image} />
                     </View>

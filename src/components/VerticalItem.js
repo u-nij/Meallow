@@ -5,7 +5,7 @@ import { View, ImageBackground, TouchableOpacity, Text, ScrollView } from 'react
 const VerticalItem = ({ items }) => (
     <View style={styles.vertical_img_layout}>
         {items.map((item) => (
-            (<TouchableOpacity style={{marginBottom: 30}} activeOpacity={0.8}>
+            (<TouchableOpacity key={item.name} style={{marginBottom: 30}} activeOpacity={0.8}>
                 <View style={styles.image_wrapper_vertical}>
                     <ImageBackground source={item.image} style={styles.item_image} />
                 </View>

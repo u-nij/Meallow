@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import OnBoardingSelected from '../components/OnBoarding1Selected';
 import OnBoardingListFooter from '../components/OnBoardingListFooter';
+import { useNavigation } from '@react-navigation/native';
 
 const OnBoarding1Screen = () => {
+  const navigation = useNavigation();
+
   const [items, setItems] = useState([
     { id: 0, title: '쌀', selected: false },
     { id: 1, title: '밀가루', selected: false },
@@ -26,7 +29,7 @@ const OnBoarding1Screen = () => {
   };
 
   const onNextPressed = () => {
-    alert("next");
+    navigation.navigate('OnBoarding2');
   };
 
   const onItemPressed = (item) => {

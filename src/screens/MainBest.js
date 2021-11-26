@@ -20,12 +20,12 @@ export default function MainBest( {user_name} ) {
 
     const navigation = useNavigation();
     const name = user_name ? user_name : '밀로';
-    const button_type = user_name ? '식단 받기' : '회원가입';
+    const button_type = user_name ? '식단 받기' : '시작하기';
 
     return (
         <ScrollView style={styles.default}>
             <ImageBackground source={bannerImg} style={styles.banner_img}>
-                <TouchableOpacity onPress={()=>('회원가입 페이지로 이동합니다.')} style={styles.banner_button}>
+                <TouchableOpacity onPress={() => navigation.navigate('SocialLogin')} style={styles.banner_button}>
                     <Text style={[styles.item_name, {color:'#fff'}]}> {button_type} </Text>
                 </TouchableOpacity>
             </ImageBackground>

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import OnBoardingListFooter from '../components/OnBoardingListFooter';
 import ItemImage from '../../assets/OnBoardingStep3.png';
 import ItemImageGray from '../../assets/OnBoardingStep3_Gray.png';
 
 const OnBoarding3Screen = () => {
+  const navigation = useNavigation();
+
   const [items, setItems] = useState([
     { id: 0, title: '아침' },
     { id: 1, title: '점심' },
@@ -14,11 +17,11 @@ const OnBoarding3Screen = () => {
   const [selected, setSelected] = useState([]);
 
   const onBackPressed = () => {
-    alert("Back");
+    navigation.navigate('OnBoarding2');
   };
 
   const onNextPressed = () => {
-    alert("next");
+    navigation.navigate('MainRecommended');
   };
 
   const onItemPressed = (itemId) => {

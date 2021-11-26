@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Title from '../../assets/socialLoginTitle.png';
 import BoxMockUpImage from '../../assets/BoxMockups1.png';
 import KakaoLoginImage from '../../assets/KakaoLogin.png';
@@ -7,16 +8,18 @@ import NaverLoginImage from '../../assets/NaverLogin.png';
 import GoogleLoginImage from '../../assets/GoogleLogin.png';
 
 const SocialLogin = () => {
+  const navigation = useNavigation();
+
   const onKakaoPressed = () => {
-    alert("kakao login");
+    navigation.navigate('OnBoarding1');
   };
 
   const onNaverPressed = () => {
-    alert("naver login");
+    navigation.navigate('OnBoarding1');
   };
 
   const onGooglePressed = () => {
-    alert("google login");
+    navigation.navigate('OnBoarding1');
   };
 
   return (

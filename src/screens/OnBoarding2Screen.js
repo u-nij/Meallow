@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import OnBoardingListFooter from '../components/OnBoardingListFooter';
 import ItemImage1 from '../../assets/OnBoardingStep2(1).png';
 import ItemImage2 from '../../assets/OnBoardingStep2(2).png';
@@ -9,6 +10,8 @@ import ItemImageGray2 from '../../assets/OnBoardingStep2(2)_Gray.png';
 import ItemImageGray3 from '../../assets/OnBoardingStep2(3)_Gray.png';
 
 const OnBoarding2Screen = () => {
+  const navigation = useNavigation();
+
   const [items, setItems] = useState([
     { id: 0, title: '영양가득 집밥', description: '영양소 균형이 잘 잡힌 건강집밥', img: ItemImage1,  img_gray: ItemImageGray1 },
     { id: 1, title: '든든한 집밥', description: '먹으면 헛배부리지 않는 든든집밥', img: ItemImage2, img_gray: ItemImageGray2 },
@@ -18,11 +21,11 @@ const OnBoarding2Screen = () => {
   const [selected, setSelected] = useState([]);
 
   const onBackPressed = () => {
-    alert("Back");
+    navigation.navigate('OnBoarding1');
   };
 
   const onNextPressed = () => {
-    alert("next");
+    navigation.navigate('OnBoarding3');
   };
 
   const onItemPressed = (itemId) => {

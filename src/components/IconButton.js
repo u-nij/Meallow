@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     button_wrapper: {
         flex: 1,
         margin: 5,
-        height: '70%',
+        height: '50%',
         maxWidth: '20%',
         justifyContent: 'center',
         alignItems: 'center',

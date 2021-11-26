@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import IconButton from './IconButton';
 
 const types = {
@@ -16,6 +17,7 @@ const types = {
 };
 
 function Footer( {menu} ) {
+    const navigation = useNavigation();
 
     let home = false;
     let recipe = false;
@@ -39,10 +41,10 @@ function Footer( {menu} ) {
     
     return (
         <View style={styles.footer}>
-            {!home && <IconButton type={types.home}></IconButton>}
-            {home && <IconButton type={types.home_active}></IconButton>}
-            {!recipe && <IconButton type={types.recipe}></IconButton>}
-            {recipe && <IconButton type={types.recipe_active}></IconButton>}
+            {!home && <IconButton type={types.home} onPress={() => navigation.navigate('MainRecommended')}></IconButton>}
+            {home && <IconButton type={types.home_active} onPress={() => navigation.navigate('MainRecommended')}></IconButton>}
+            {!recipe && <IconButton type={types.recipe} onPress={() => navigation.navigate('Recipe')}></IconButton>}
+            {recipe && <IconButton type={types.recipe_active} onPress={() => navigation.navigate('Recipe')}></IconButton>}
             <TouchableOpacity activeOpacity={0.8} style={styles.button_wrapper}>
               <Image source={types.qr_code} style={styles.button_image}></Image>
             </TouchableOpacity>

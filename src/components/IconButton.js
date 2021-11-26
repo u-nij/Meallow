@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-const IconButton = ({type}) => {
+const IconButton = ({type, onPress}) => {
     return (
-        <TouchableOpacity activeOpacity={0.8} style={styles.button_wrapper}>
+        <TouchableOpacity activeOpacity={0.8} style={styles.button_wrapper} onPress={onPress}>
             <Image source={type} style={styles.button_image}></Image>
         </TouchableOpacity>
     );

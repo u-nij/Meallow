@@ -12,13 +12,16 @@ export default function App() {
     // <MainLayout user_name={'유진'} header footer recommended></MainLayout>
     // <OnBoarding />
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MainRecommended" screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName="Recipe" screenOptions={{headerShown: false}}>
         <Stack.Screen name="MainRecommended">
           {props => <MainLayout user_name={''} header footer recommended></MainLayout>}
         </Stack.Screen>
         <Stack.Screen name="OnBoarding" component={OnBoarding}></Stack.Screen>
         <Stack.Screen name="MainBest" >
           {props => <MainLayout user_name={''} header footer best></MainLayout>}
+        </Stack.Screen>
+        <Stack.Screen name="Recipe" >
+          {props => <MainLayout user_name={''} header footer recipe></MainLayout>}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

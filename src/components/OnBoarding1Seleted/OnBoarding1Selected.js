@@ -26,25 +26,25 @@ const OnBoarding1Selected = ({onPress, text, width}) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginRight: 20,
+    marginRight: 7,
   },
   buttonStyle: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FF9069',
-    height: 88,
-    borderRadius: 44,
+    height: 30,
+    borderRadius: 15,
   },
   buttonTextStyle: {
-    fontSize: 41,
+    fontSize: 13,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    marginRight: 14,
+    marginRight: 5,
   },
   buttonImageIconStyle: {
-    width: 46.8,
-    height: 46.8,
+    width: 15,
+    height: 15,
   },
 });
 

@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import MainLayout from './src/components/MainLayout'
 import OnBoarding from './src/screens/OnBoarding1Screen';

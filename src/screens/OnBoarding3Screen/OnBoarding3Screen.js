@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
-import OnBoardingSelected from '../../components/OnBoarding1Seleted';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import OnBoardingListFooter from '../../components/OnBoardingListFooter';
+import ItemImage from '../../../assets/OnBoardingStep3.png';
+import ItemImageGray from '../../../assets/OnBoardingStep3_Gray.png';
 
-const OnBoarding1Screen = () => {
+const OnBoarding3Screen = () => {
   const [items, setItems] = useState([
-    { id: 0, title: '쌀', selected: false },
-    { id: 1, title: '밀가루', selected: false },
-    { id: 2, title: '달걀/유제품', selected: false },
-    { id: 3, title: '김치', selected: false },
-    { id: 4, title: '생선', selected: false },
-    { id: 5, title: '해산물', selected: false },
-    { id: 6, title: '소고기', selected: false },
-    { id: 7, title: '돼지고기', selected: false },
-    { id: 8, title: '닭고기', selected: false },
-    { id: 9, title: '버섯', selected: false },
-    { id: 10, title: '콩/두부', selected: false },
-    { id: 11, title: '과일', selected: false },
+    { id: 0, title: '아침' },
+    { id: 1, title: '점심' },
+    { id: 2, title: '저녁' },
   ]);
 
   const [selected, setSelected] = useState([]);
@@ -29,35 +21,32 @@ const OnBoarding1Screen = () => {
     alert("next");
   };
 
-  const onItemPressed = (item) => {
-    items[item.id].selected = true;
-    setSelected(selected => [...selected, item]);
-  };
-
-  const onSelectCancelPressed = (itemId) => {
-    items[itemId].selected = false;
-    setSelected(selected => selected.filter(item => item.id !== itemId))
+  const onItemPressed = (itemId) => {
+    if(selected.indexOf(itemId) > -1)
+      setSelected(selected => selected.filter(selectedId => selectedId !== itemId));
+    else
+      setSelected(selected => [...selected, itemId]);
   };
 
   const ItemList = ({itemList}) => {
     return (
-      <ScrollView style={styles.itemListStyle} >
+      <View style={styles.itemListStyle} >
         {itemList.map((item) => (
           <TouchableOpacity
-            onPress={() => onItemPressed(item)}
+            onPress={() => onItemPressed(item.id)}
             key={item.id}
-            style={styles.itemStyle}
+            style={selected.indexOf(item.id) > -1 ? styles.itemStyle_SELECTED : styles.itemStyle}
             activeOpacity={0.7}>
-            <Text style={ item.selected ? styles.itemTextStyle_SELECTED : styles.itemTextStyle}>
-              {item.title}
-            </Text>
             <Image
-              source={require('../../../assets/done_black_24dp.png')}
+              source={selected.indexOf(item.id) > -1 ? ItemImage : ItemImageGray}
               style={styles.itemImageIconStyle}
             />
+            <Text style={selected.indexOf(item.id) > -1 ? styles.itemTextStyle_SELECTED : styles.itemTextStyle}>
+                {item.title}
+            </Text>
           </TouchableOpacity>
         ))}
-      </ScrollView>
+      </View>
     );
   };
 
@@ -65,21 +54,16 @@ const OnBoarding1Screen = () => {
     return (
       <View style={styles.headerStyle}>
         <View style={styles.headerBarContainerStyle}>
+          <View style={styles.headerBarStyle} />
           <View style={[
             styles.headerBarStyle,
             {backgroundColor: '#363636'},
           ]} />
           <View style={styles.headerBarStyle} />
-          <View style={styles.headerBarStyle} />
         </View>
-        <Text style={styles.textStepStyle}>Step1</Text>
-        <Text style={styles.textDescriptionStyle}>'밀로'님이 선호하는</Text>
-        <Text style={styles.textDescriptionStyle}>집밥 메뉴는 어떤건가요? (최대 3개)</Text>
-        <View style={styles.SeletedContainerStyle}>
-          {selected.map((item) => (
-            <OnBoardingSelected key={item.id} onPress={() => onSelectCancelPressed(item.id)} text={item.title} width={42 + 13 * item.title.length} />
-          ))}
-        </View>
+        <Text style={styles.textStepStyle}>Step3</Text>
+        <Text style={styles.textDescriptionStyle}>'밀로'님이 챙기고 싶은</Text>
+        <Text style={styles.textDescriptionStyle}>끼니는 언제인가요?</Text>
       </View>
     );
   };
@@ -107,31 +91,38 @@ const styles = StyleSheet.create({
 
   itemListStyle: {
     height: 365,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingBottom: 100,
   },
 
   itemStyle: {
-    flex: 1,
-    flexDirection: 'row',
+    flex: 0.3,
     alignItems: 'center',
-    justifyContent: 'center',
-    height: 25,
-    marginBottom: 10,
+    height: 160,
+  },
+  itemStyle_SELECTED: {
+    flex: 0.3,
+    alignItems: 'center',
+    height: 160,
   },
   itemTextStyle: {
-    flex: 1,
     fontSize: 17,
     fontWeight: 'bold',
     color: '#AAAAAA',
+    marginBottom: 3,
   },
   itemTextStyle_SELECTED: {
-    flex: 1,
     fontSize: 17,
     fontWeight: 'bold',
-    color: '#000000',
+    color: '#FF9069',
+    marginBottom: 3,
   },
   itemImageIconStyle: {
-    width: 17,
-    height: 17,
+    width: 30,
+    height: 71.4,
+    marginBottom: 20,
   },
 
   headerStyle: {
@@ -169,4 +160,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OnBoarding1Screen;
+export default OnBoarding3Screen;

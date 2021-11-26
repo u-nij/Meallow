@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Image, TouchableOpacity, ImageBackground, Text } from 'react-native';
 import styles from '../components/MainStyles';
-import { useNavigation } from '@react-navigation/native';
-import VerticalItem from '../components/VerticalItem';
+import { useNavigation } from '@react-navigation/core';
 import RecipeHashtag from '../components/RecipeHashtag';
 
 const bannerImg = require('../../assets/recipe_banner.png');
@@ -44,7 +43,7 @@ export default function Recipe() {
         setSelected(selected => hashtagId);
     };
   
-    const items = selected ? recipes2 : recipes1;
+    const recipes = selected ? recipes2 : recipes1;
 
     return (
         <ScrollView style={styles.default}>

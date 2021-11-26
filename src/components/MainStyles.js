@@ -79,6 +79,11 @@ const styles = StyleSheet.create({
         color: "#363636",
         marginRight: 5, 
     },
+    hashtag_container: {
+        flexDirection: 'row',
+        marginTop: 10,
+        marginHorizontal: '5%',
+    },
 });
 
 export default styles;

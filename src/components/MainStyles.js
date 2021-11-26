@@ -68,6 +68,16 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold',
         color: "#000",
+        marginTop: 5,
+    },
+    item_info_container: {
+        flexDirection: 'row',
+        marginTop: 3, 
+    },
+    item_info: {
+        fontSize: 12,
+        color: "#363636",
+        marginRight: 5, 
     },
 });
 

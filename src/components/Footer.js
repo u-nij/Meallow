@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text } from 'react-native';
-
+import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 import IconButton from './IconButton';
 
 const types = {
@@ -44,7 +43,10 @@ function Footer( {menu} ) {
             {home && <IconButton type={types.home_active}></IconButton>}
             {!recipe && <IconButton type={types.recipe}></IconButton>}
             {recipe && <IconButton type={types.recipe_active}></IconButton>}
-            <IconButton type={types.qr_code}></IconButton>
+            <TouchableOpacity activeOpacity={0.8} style={styles.button_wrapper}>
+              <Image source={types.qr_code} style={styles.button_image}></Image>
+            </TouchableOpacity>
+            <IconButton></IconButton>
             {!subscribe && <IconButton type={types.subscribe}></IconButton>}
             {subscribe && <IconButton type={types.subscribe_active}></IconButton>}
             {!my_page && <IconButton type={types.my_page}></IconButton>}
@@ -61,7 +63,21 @@ const styles = StyleSheet.create({
         height: 90,
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 10,
+    },
+    button_wrapper: {
+      flex: 1,
+      margin: 5,
+      height: '60%',
+      maxWidth: '20%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      position: 'absolute',
+      top: '-25%',
+      left: '45%',
+    },
+    button_image: {
+        height: '100%',
+        resizeMode: 'contain',
     },
 });
   

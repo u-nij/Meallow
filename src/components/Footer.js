@@ -49,8 +49,8 @@ function Footer( {menu} ) {
               <Image source={types.qr_code} style={styles.button_image}></Image>
             </TouchableOpacity>
             <IconButton></IconButton>
-            {!subscribe && <IconButton type={types.subscribe}></IconButton>}
-            {subscribe && <IconButton type={types.subscribe_active}></IconButton>}
+            {!subscribe && <IconButton type={types.subscribe} onPress={() => navigation.navigate('Subscribe')}></IconButton>}
+            {subscribe && <IconButton type={types.subscribe_active} onPress={() => navigation.navigate('Subscribe')}></IconButton>}
             {!my_page && <IconButton type={types.my_page}></IconButton>}
             {/* {my_page && <IconButton type={types.my_page_active}></IconButton>} */}
         </View>

@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MainRecommended" screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName="Subscribe" screenOptions={{headerShown: false}}>
         <Stack.Screen name="MainRecommended">
           {props => <MainLayout user_name={''} header footer recommended></MainLayout>}
         </Stack.Screen>
@@ -29,6 +29,9 @@ export default function App() {
           {props => <PurchaseDetails content='information'></PurchaseDetails>}
         </Stack.Screen>
         <Stack.Screen name="RecipeDetail" component={RecipeDetail}></Stack.Screen>
+        <Stack.Screen name="Subscribe" >
+          {props => <MainLayout user_name={''} header footer subscribe></MainLayout>}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

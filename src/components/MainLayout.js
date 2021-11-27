@@ -7,15 +7,19 @@ import Header from './Header';
 import Footer from './Footer';
 import MainRecommended from '../screens/MainRecommended';
 import Recipe from '../screens/Recipe';
+import Subscribe from '../screens/Subscribe';
 
-const MainLayout = ( {user_name, header, footer, best, recommended, recipe} ) => {
+const MainLayout = ( {user_name, header, footer, recommended, recipe, subscribe} ) => {
     
     let title = null;
     let menu = '';
     if (recipe) {
         title = '레시피';
         menu = 'recipe';
-    } else if (best || recommended) {
+    } else if (subscribe) {
+        title = 'My 구독';
+        menu = 'subscribe';
+    } else if (recommended) {
         menu = 'home';
     }
 
@@ -25,6 +29,7 @@ const MainLayout = ( {user_name, header, footer, best, recommended, recipe} ) =>
             {header && <Header title={title}/>}
             {recommended && <MainRecommended user_name={user_name} />}
             {recipe && <Recipe />}
+            {subscribe && <Subscribe />}
             {footer && <Footer menu={menu} />}
         </View>
     );

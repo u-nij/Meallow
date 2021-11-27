@@ -84,6 +84,56 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginHorizontal: '5%',
     },
+    subscribe_font: {
+        fontSize: 14,
+        color: '#000',
+        marginBottom: 5,
+    },
+    subscribe_font2: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#000',
+        alignSelf: 'center',
+    },
+    subscribe_price: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        borderBottomWidth: 15,
+
+        position: 'absolute',
+        top: '80%',
+    },
+    subscribe_price2: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        borderBottomWidth: 15,
+        borderBottomColor: '#FF9069',
+        color: '#000',
+        top: '0%'
+    },
+    subscribe_tmp: {
+        marginTop: 20,
+        height: 230,
+        width: '80%',
+        backgroundColor: '#fff',
+        resizeMode: 'contain',
+        alignSelf: 'center',
+    },
+    subscribe_start_button: {
+        height: 50,
+        width: '90%',
+        backgroundColor: '#ff9069',
+        alignSelf: 'center',
+        marginTop: 40,
+        justifyContent: 'center',
+        borderRadius: 10,
+    },
+    subscribe_start_button_font: {
+        color: '#fff',
+        fontSize: 14,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+    },
 });
 
 export default styles;

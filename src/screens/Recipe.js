@@ -1,9 +1,7 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { View, ScrollView, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, ScrollView, Image, TouchableOpacity, ImageBackground, Text } from 'react-native';
 import styles from '../components/MainStyles';
-import { useNavigation } from '@react-navigation/native';
-import VerticalItem from '../components/VerticalItem';
+import { useNavigation } from '@react-navigation/core';
 import RecipeHashtag from '../components/RecipeHashtag';
 
 const bannerImg = require('../../assets/recipe_banner.png');
@@ -44,6 +42,8 @@ export default function Recipe() {
       if(selected !== hashtagId)
         setSelected(selected => hashtagId);
     };
+  
+    const recipes = selected ? recipes2 : recipes1;
 
     return (
         <ScrollView style={styles.default}>
@@ -54,7 +54,22 @@ export default function Recipe() {
                 ))}
              </ScrollView>
             <View style={[styles.component_layout, {margin: 20}]}>
-                <VerticalItem items={selected ? recipes2 : recipes1}></VerticalItem>
+                <View style={styles.vertical_img_layout}>
+                    {recipes.map((item) => (
+                        (<TouchableOpacity key={item.name} style={{marginBottom: 30}} activeOpacity={0.8}
+                            onPress={() => navigation.navigate('RecipeDetail')}>
+                            <View style={styles.image_wrapper_vertical}>
+                                <ImageBackground source={item.image} style={styles.item_image} />
+                            </View>
+                            <Text style={styles.item_name}>{item.name}</Text>
+                            <View style={styles.item_info_container}>
+                              <Text style={styles.item_info}>작성자 {item.writer}</Text>
+                              <Text style={styles.item_info}>|</Text>
+                              <Text style={styles.item_info}>{item.date}</Text>
+                            </View>
+                        </TouchableOpacity>)
+                    ))}
+                </View>
             </View>
         </ScrollView>
     );

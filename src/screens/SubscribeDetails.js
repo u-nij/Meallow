@@ -68,7 +68,7 @@ export default function SubscribeDetails( ) {
                         {days.map((item) => (
                             <TouchableOpacity
                                 onPress={() => onItemPressed(item, days)}
-                                style={item.selected ? [styles.days_button, {borderColor: 'coral', backgroundColor: 'coral'}] : styles.days_button}
+                                style={item.selected ? [styles.days_button, {borderColor: '#FF9069', backgroundColor: '#FF9069'}] : styles.days_button}
                                 activeOpacity={0.7} key={item.id}>
                                 <Text style={ item.selected ? [styles.button_font, {color: '#fff'}] : styles.button_font}> {item.title} </Text>
                             </TouchableOpacity>
@@ -81,7 +81,7 @@ export default function SubscribeDetails( ) {
                         {meals.map((item) => (
                             <TouchableOpacity
                                 onPress={() => onItemPressed(item, meals)}
-                                style={item.selected ? [styles.meals_button, {borderColor: 'coral', backgroundColor: 'coral'}] : styles.meals_button}
+                                style={item.selected ? [styles.meals_button, {borderColor: '#FF9069', backgroundColor: '#FF9069'}] : styles.meals_button}
                                 activeOpacity={0.7} key={item.id}>
                                 <Text style={ item.selected ? [styles.button_font, {color: '#fff'}] : styles.button_font}> {item.title} </Text>
                             </TouchableOpacity>
@@ -101,14 +101,14 @@ export default function SubscribeDetails( ) {
             </ScrollView>
 
             <View style={styles.footerStyle}>
-            <CustomButton
-        onPress={() => onItemPressed(item)}
-        text="다음"
-        fontSize={16}
-        bgColor="#363636"
-        width='100%'
-        height={50}
-      />
+                <CustomButton
+                    onPress={() => {alert('다음 페이지로 이동합니다');}}
+                    text="다음"
+                    fontSize={16}
+                    bgColor="#363636"
+                    width='100%'
+                    height={50}
+                />
             </View>
             <StatusBar style='auto' />
         </View>
@@ -154,10 +154,11 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
+        fontWeight: 'bold',
         color: '#363636',
     },
     subtitle: {
-        fontSize: 17,
+        fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
         color: '#363636',
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
         height: 55,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 18,
+        borderRadius: 27,
         borderWidth: 1,
         borderColor: '#E5E5E5',
         backgroundColor: '#fff',
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
         height: 35,
         justifyContent: 'center',
         marginRight: 7,
-        borderRadius: 5,
+        borderRadius: 6,
         borderWidth: 1,
         borderColor: '#E5E5E5',
         backgroundColor: '#fff',
@@ -213,8 +214,8 @@ const styles = StyleSheet.create({
         color: '#363636',
     },
     button_font: {
-        fontSize: 14,
-        color: '#000',
+        fontSize: 16,
+        color: '#aaaaaa',
         alignSelf: 'center',
     },
     footerStyle: {

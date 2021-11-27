@@ -6,11 +6,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     my_page_img: {
-        height: 1000,
+        height: 550,
         backgroundColor: '#fff',
         resizeMode: 'contain',
         width: "100%",
-        resizeMode: 'contain',
+        marginTop: 10,
+        marginBottom: 30,
     },
     banner_img: {
         height: 180,

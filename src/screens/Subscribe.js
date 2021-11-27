@@ -7,7 +7,9 @@ const subscribe_tmp = require('../../assets/subscribe_tmp.png');
 
 export default function Subscribe() {
     
+    const navigation = useNavigation();
     let price = '0'
+
     return (
         <ScrollView style={{width: '90%', backgroundColor: '#fff'}}>
             <View>
@@ -27,7 +29,7 @@ export default function Subscribe() {
                 <Text style={[styles.subscribe_font, {marginTop: 10, alignSelf: 'center'}]}>배달음식은 이제 그만! 집밥을 구독하세요~</Text>
             </View>
             <TouchableOpacity style={styles.subscribe_start_button} activeOpacity={0.8}
-                            onPress={() => alert('레시피 상세 페이지로 이동합니다.')}>
+                            onPress={() => navigation.navigate('SubscribeDetails')}>
                 <Text style={styles.subscribe_start_button_font}>+  구독 시작해보기</Text>
             </TouchableOpacity>
         </ScrollView>

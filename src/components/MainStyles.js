@@ -5,6 +5,13 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#fff',
     },
+    my_page_img: {
+        height: 1000,
+        backgroundColor: '#fff',
+        resizeMode: 'contain',
+        width: "100%",
+        resizeMode: 'contain',
+    },
     banner_img: {
         height: 180,
         width: "100%",

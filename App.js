@@ -5,7 +5,9 @@ import OnBoarding1 from './src/screens/OnBoarding1Screen';
 import OnBoarding2 from './src/screens/OnBoarding2Screen';
 import OnBoarding3 from './src/screens/OnBoarding3Screen';
 import PurchaseDetails from './src/screens/PurchaseDetails';
+import SubscribeDetails from './src/screens/SubscribeDetails';
 import Purchase from './src/screens/Purchase';
+
 import SocialLogin from './src/screens/SocialLogin';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator  } from '@react-navigation/stack';
@@ -33,6 +35,10 @@ export default function App() {
         <Stack.Screen name="RecipeDetail" component={RecipeDetail}></Stack.Screen>
         <Stack.Screen name="Subscribe" >
           {props => <MainLayout user_name={''} header footer subscribe></MainLayout>}
+        </Stack.Screen>
+        <Stack.Screen name="SubscribeDetails" component={SubscribeDetails}></Stack.Screen>
+        <Stack.Screen name="MyPage" >
+          {props => <MainLayout user_name={''} header footer mypage></MainLayout>}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

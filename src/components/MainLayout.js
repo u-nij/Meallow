@@ -8,8 +8,9 @@ import Footer from './Footer';
 import MainRecommended from '../screens/MainRecommended';
 import Recipe from '../screens/Recipe';
 import Subscribe from '../screens/Subscribe';
+import MyPage from '../screens/MyPage';
 
-const MainLayout = ( {user_name, header, footer, recommended, recipe, subscribe} ) => {
+const MainLayout = ( {user_name, header, footer, recommended, recipe, subscribe, mypage} ) => {
     
     let title = null;
     let menu = '';
@@ -21,6 +22,9 @@ const MainLayout = ( {user_name, header, footer, recommended, recipe, subscribe}
         menu = 'subscribe';
     } else if (recommended) {
         menu = 'home';
+    } else if (mypage) {
+        title = '마이페이지';
+        menu = 'my_page';
     }
 
     return (
@@ -30,6 +34,7 @@ const MainLayout = ( {user_name, header, footer, recommended, recipe, subscribe}
             {recommended && <MainRecommended user_name={user_name} />}
             {recipe && <Recipe />}
             {subscribe && <Subscribe />}
+            {mypage && <MyPage />}
             {footer && <Footer menu={menu} />}
         </View>
     );

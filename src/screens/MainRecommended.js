@@ -45,13 +45,13 @@ export default function MainRecommended( {user_name} ) {
                 </TouchableOpacity>
             </ImageBackground>
 
-            <View style={{height: 5, backgroundColor: '#bbb'}}></View>
+            <View style={{height: 5, backgroundColor: '#F1F1F1'}}></View>
             
             <View style={styles.component_layout}>
                 <View style={{flexDirection: 'row'}}>
                     <TouchableOpacity activeOpacity={0.8}
                         onPress={() => {onRecommendedButton();}}>
-                        <Text style={[styles.layout_title, recommended && {color:'#000', borderBottomWidth: 2}]}> {'추천'} </Text>
+                        <Text style={[styles.layout_title, recommended && {color:'#000', borderBottomWidth: 3}]}> {'추천'} </Text>
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={0.8}
                         onPress={() => {onBestButton();}}>

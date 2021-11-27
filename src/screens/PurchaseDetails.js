@@ -94,7 +94,7 @@ export default function PurchaseDetails( {content, item=item_infos} ) {
                     <Text style={{fontSize: 14, fontWeight: 'bold', paddingBottom: 10}}>같은 식단에 넣으면 좋은 밀키트</Text>
                     <View style={styles.recommended_items_layout}>
                         {recommended_items.map((item) => (
-                            <Image style={styles.recommended_img} source={item} />
+                            <Image key={item} style={styles.recommended_img} source={item} />
                         ))}
                     </View>
                 </View>
@@ -122,7 +122,7 @@ export default function PurchaseDetails( {content, item=item_infos} ) {
 
             <View style={{width:'100%', height: '50%', backgroundColor: '#fff', alignItems: 'center', paddingHorizontal: '5%', paddingVertical: 10}}>
                 <TouchableOpacity TouchableOpacity style={[styles.purchase_button, {backgroundColor: '#000'}]}
-                    onPress={() => {alert('상품 구매 페이지로 이동합니다.');}} activeOpacity={0.7}>
+                    onPress={() => navigation.navigate('Purchase')} activeOpacity={0.7}>
                     <Text style={styles.button_font}>상품 구매하기</Text>
                 </TouchableOpacity>
                 <TouchableOpacity TouchableOpacity style={[styles.purchase_button, {backgroundColor: 'coral'}]}

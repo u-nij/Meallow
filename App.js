@@ -6,6 +6,8 @@ import OnBoarding2 from './src/screens/OnBoarding2Screen';
 import OnBoarding3 from './src/screens/OnBoarding3Screen';
 import PurchaseDetails from './src/screens/PurchaseDetails';
 import SubscribeDetails from './src/screens/SubscribeDetails';
+import Purchase from './src/screens/Purchase';
+
 import SocialLogin from './src/screens/SocialLogin';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator  } from '@react-navigation/stack';
@@ -15,7 +17,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MyPage" screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName="MainRecommended" screenOptions={{headerShown: false}}>
         <Stack.Screen name="MainRecommended">
           {props => <MainLayout user_name={''} header footer recommended></MainLayout>}
         </Stack.Screen>
@@ -26,6 +28,7 @@ export default function App() {
         <Stack.Screen name="Recipe" >
           {props => <MainLayout user_name={''} header footer recipe></MainLayout>}
         </Stack.Screen>
+        <Stack.Screen name="Purchase" component={Purchase}></Stack.Screen>
         <Stack.Screen name="PurchaseDetails">
           {props => <PurchaseDetails content='information'></PurchaseDetails>}
         </Stack.Screen>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -13,12 +13,20 @@ const steps = [
 const RecipeDetail = () => {
   const navigation = useNavigation();
 
+  const scrap_img = require('../../assets/button/scrap.png');
+  const scrap_active_img = require('../../assets/button/scrap_active.png');
+
+  const [scrap, setScrap] = useState(false);
+  const onScrapPressed = () => {
+      setScrap(!scrap);
+  };
+
   const DetailHeader = () => {
     return (
       <View style={styles.header}>
       <TouchableOpacity
         style={styles.headerButton}
-        onPress={() => navigation.navigate('Recipe')}
+        onPress={() => navigation.goBack()}
         activeOpacity={0.7}
       >
         <Image
@@ -66,14 +74,20 @@ const RecipeDetail = () => {
             {fontSize: 16},
             {fontWeight: 'bold'},
           ]}>달큰한 호박죽 레시피</Text>
-            <Image 
-              source={require('../../assets/favorite_border_black_24dp.png')} 
+            <TouchableOpacity
+              onPress={() => onScrapPressed()}
               style={[
                 {height: '100%'},
-                {resizeMode: 'contain'},
                 {position: 'absolute'},
-                {right: '-15%'},
-              ]} />
+                {right: '-5%'},
+              ]}>
+              <Image 
+                source={scrap ? scrap_active_img : scrap_img} 
+                style={[
+                  {height: '100%'},
+                  {resizeMode: 'contain'},
+                ]} />
+            </TouchableOpacity>
           </View>
           <View style={[
             {flexDirection: 'row'},

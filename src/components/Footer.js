@@ -12,7 +12,7 @@ const types = {
     subscribe_active:require('../../assets/button/subscribe_active.png'),
     subscribe:require('../../assets/button/subscribe.png'),
     my_page:require('../../assets/button/my_page.png'),
-    // my_page_active:require('../../assets/button/my_page_active.png'),
+    my_page_active:require('../../assets/button/my_page_active.png'),
 
 };
 
@@ -51,8 +51,8 @@ function Footer( {menu} ) {
             <IconButton></IconButton>
             {!subscribe && <IconButton type={types.subscribe} onPress={() => navigation.navigate('Subscribe')}></IconButton>}
             {subscribe && <IconButton type={types.subscribe_active} onPress={() => navigation.navigate('Subscribe')}></IconButton>}
-            {!my_page && <IconButton type={types.my_page}></IconButton>}
-            {/* {my_page && <IconButton type={types.my_page_active}></IconButton>} */}
+            {!my_page && <IconButton type={types.my_page} onPress={() => navigation.navigate('MyPage')}></IconButton>}
+            {my_page && <IconButton type={types.my_page_active}onPress={() => navigation.navigate('MyPage')}></IconButton>}
         </View>
     );
 }

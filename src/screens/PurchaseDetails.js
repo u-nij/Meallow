@@ -150,9 +150,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
     },
+    buttonBackStyle: {
+        backgroundColor: '#C4C4C4',
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        marginRight: 13,
+    },
     buttonImageIconStyle: {
-        width: 23,
-        height: 23,
+        width: 20,
+        height: 20,
     },
     title: {
         fontSize: 20,

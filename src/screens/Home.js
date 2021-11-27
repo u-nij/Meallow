@@ -21,7 +21,7 @@ const best_items = [
     { name:'아침 샐러드', price:'12,000원', image:require('../../assets/example/mealkit_example_2.png')}
 ];
 
-export default function MainRecommended( {user_name} ) {
+export default function Home( {user_name} ) {
 
     const navigation = useNavigation();
     

@@ -21,7 +21,7 @@ const OnBoarding3Screen = () => {
   };
 
   const onNextPressed = () => {
-    navigation.navigate('MainRecommended');
+    navigation.navigate('Home');
   };
 
   const onItemPressed = (itemId) => {

@@ -41,8 +41,8 @@ function Footer( {menu} ) {
     
     return (
         <View style={styles.footer}>
-            {!home && <IconButton type={types.home} onPress={() => navigation.navigate('MainRecommended')}></IconButton>}
-            {home && <IconButton type={types.home_active} onPress={() => navigation.navigate('MainRecommended')}></IconButton>}
+            {!home && <IconButton type={types.home} onPress={() => navigation.navigate('Home')}></IconButton>}
+            {home && <IconButton type={types.home_active} onPress={() => navigation.navigate('Home')}></IconButton>}
             {!recipe && <IconButton type={types.recipe} onPress={() => navigation.navigate('Recipe')}></IconButton>}
             {recipe && <IconButton type={types.recipe_active} onPress={() => navigation.navigate('Recipe')}></IconButton>}
             <TouchableOpacity activeOpacity={0.8} style={styles.button_wrapper}>

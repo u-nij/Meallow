@@ -38,7 +38,7 @@ const Purchase = () => {
     return (
       <View style={styles.footer}>
         <CustomButton
-          onPress={() => navigation.navigate('MainRecommended')}
+          onPress={() => navigation.navigate('Home')}
           text="메인으로 돌아가기"
           fontSize={16}
           bgColor="#363636"

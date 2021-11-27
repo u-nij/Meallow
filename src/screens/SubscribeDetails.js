@@ -4,54 +4,111 @@ import { StyleSheet, View, Image, TouchableOpacity, Text, ScrollView } from 'rea
 import { StatusBar } from 'expo-status-bar';
 
 import { useNavigation } from '@react-navigation/native';
+import CustomButton from '../components/CustomButton';
 
 const arrow_back = require('../../assets/arrow_back_ios_black_24dp.png');
-const basket = require('../../assets/button/basket.png');
-const scrap_img = require('../../assets/button/scrap.png');
-const scrap_img_active = require('../../assets/button/scrap_active.png');
-
-const mealkit_img = require('../../assets/mealkit_example.png')
-const mealkit_example_1 = require('../../assets/example/mealkit_example_1.png');
-const mealkit_example_2 = require('../../assets/example/mealkit_example_2.png');
-const mealkit_example_3 = require('../../assets/example/mealkit_example_3.png');
-const mealkit_example_4 = require('../../assets/example/mealkit_example_4.png');
-
-const mealkits_examples = [ mealkit_example_1, mealkit_example_2, mealkit_example_3, mealkit_example_4 ];
-const item_infos = {
-    name: '고소한 수육 밀키트',
-    introduction: '육식 집밥러들을 위한 간단한 밀키트 박스',
-    price: '18,900원 ~',
-    information: '제품명: 고소한 수육 밀키트\n용량: 650g\n유통기한: 제조일로부터 냉장 5일\n원재료명 및 함량: 돼지고기53.4%(국내산),양파(국내산),된장7.6%[대두(국내산),천일염(호주산),주정,종국],대파(국내산),유기농설탕3%,프락토올리고당,마늘(국내산),요리맛샘(대두,밀,굴),참기름(국내산),후추가루/돼지고기,대두,밀,굴 함유\n보관방법(취급방법): 0~10℃(냉장보관)\n식품의 유형: 식육함유가공품\n',
-    review: '',
-    explain: '한끼 든든하게 먹기 좋은 담백한 수육. 남녀노소 모두가 좋아하는 반찬, 수육. 이번엔 색다르게 된장 양념을 이용한 한돈 된장수육을 준비했어요. 구수하게 단맛 나는 된장 양념이 고기에 스며들어 특유의 잡내는 줄이고 더욱 부드러워진 식감을 자랑합니다. 조리하실 땐 양념이 쉽게 탈 수 있어 물을 조금 넣고 볶으시면 더욱 맛있게 드실 수 있어요.\n 된장 특유의 구수한 맛이 쏙쏙 베어 있고 한끼 반찬으로 먹기에 든든하게 구성되어 있어요.'
-};
+const favorite_1 = require('../../assets/button/favorite_1.png');
+const favorite_2 = require('../../assets/button/favorite_2.png');
+const favorite_3 = require('../../assets/button/favorite_3.png');
+const favorite_1_active = require('../../assets/button/favorite_1_active.png');
+const favorite_2_active = require('../../assets/button/favorite_2_active.png');
+const favorite_3_active = require('../../assets/button/favorite_3_active.png');
 
 export default function SubscribeDetails( ) {
     const navigation = useNavigation();
     
-    const [scrap, setScrap] = useState(false);
-    const onButton = () => {
-        setScrap(!scrap);
+    const [days, setDay] = useState([
+        { id: 0, title: '월', selected: false },
+        { id: 1, title: '화', selected: false },
+        { id: 2, title: '수', selected: false },
+        { id: 3, title: '목', selected: false },
+        { id: 4, title: '금', selected: false },
+        { id: 5, title: '토', selected: false },
+        { id: 6, title: '일', selected: false },
+    ]);
+
+    const [meals, setMeal] = useState([
+        { id: 0, title: '아침', selected: false },
+        { id: 1, title: '점심', selected: false },
+        { id: 2, title: '저녁', selected: false },
+    ]);
+
+    const [like_styles, setLikeStyle] = useState([
+        { id: 0, title: '영양가득_집밥', selected: false, img:favorite_1_active, img_gray:favorite_1 },
+        { id: 1, title: '든든한_집밥', selected: false, img:favorite_2_active, img_gray:favorite_2 },
+        { id: 2, title: '간편한_집밥', selected: false, img:favorite_3_active, img_gray:favorite_3},
+    ]);
+
+    const [selected, setSelected] = useState([]);
+
+    const onItemPressed = (item, items) => {
+        if (items[item.id].selected) {
+            items[item.id].selected = false;
+            setSelected(selected => selected.filter(item => selected.id !== item.id))
+        } else {
+            items[item.id].selected = true;
+            setSelected(selected => [...selected, item]);
+        }
     };
 
     return (
         <View stlye={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.buttonBackStyle} onPress={() => {navigation.goBack();}} activeOpacity={0.7}>
+                <TouchableOpacity style={styles.buttonImageIconStyle} onPress={() => {navigation.goBack();}} activeOpacity={0.7}>
                     <Image source={arrow_back} style={styles.buttonImageIconStyle}/>
                 </TouchableOpacity>
                 <Text style={styles.title}>구독</Text>
+                <Text style={styles.buttonImageIconStyle}></Text>
             </View>
 
-            <View style={{width:'100%', height: '50%', backgroundColor: '#fff', alignItems: 'center', paddingHorizontal: '5%', paddingVertical: 10}}>
-                <TouchableOpacity TouchableOpacity style={[styles.purchase_button, {backgroundColor: '#000'}]}
-                    onPress={() => {alert('상품 구매 페이지로 이동합니다.');}} activeOpacity={0.7}>
-                    <Text style={styles.button_font}>상품 구매하기</Text>
-                </TouchableOpacity>
-                <TouchableOpacity TouchableOpacity style={[styles.purchase_button, {backgroundColor: 'coral'}]}
-                    onPress={() => {}} activeOpacity={0.7}>
-                    <Text style={styles.button_font}>밀키트 구독하기</Text>
-                </TouchableOpacity>
+            <ScrollView style={styles.main_layout}>
+                <View>
+                    <Text style={styles.subtitle}>식단 요일</Text>
+                    <View style={styles.days_layout}>
+                        {days.map((item) => (
+                            <TouchableOpacity
+                                onPress={() => onItemPressed(item, days)}
+                                style={item.selected ? [styles.days_button, {borderColor: 'coral', backgroundColor: 'coral'}] : styles.days_button}
+                                activeOpacity={0.7} key={item.id}>
+                                <Text style={ item.selected ? [styles.button_font, {color: '#fff'}] : styles.button_font}> {item.title} </Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                </View>
+                <View>
+                    <Text style={styles.subtitle}>구독 끼니</Text>
+                    <View style={styles.meals_layout}>
+                        {meals.map((item) => (
+                            <TouchableOpacity
+                                onPress={() => onItemPressed(item, meals)}
+                                style={item.selected ? [styles.meals_button, {borderColor: 'coral', backgroundColor: 'coral'}] : styles.meals_button}
+                                activeOpacity={0.7} key={item.id}>
+                                <Text style={ item.selected ? [styles.button_font, {color: '#fff'}] : styles.button_font}> {item.title} </Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                    <Text style={styles.subtitle}>선호 집밥 스타일</Text>
+                    <View style={styles.like_styles_layout}>
+                        {like_styles.map((item) => (
+                            <TouchableOpacity
+                                onPress={() => onItemPressed(item, like_styles)}
+                                activeOpacity={0.7} key={item.id}>
+                                <Image style={styles.like_styles_img} source={item.selected ? item.img : item.img_gray}></Image>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                </View>
+            </ScrollView>
+
+            <View style={styles.footerStyle}>
+            <CustomButton
+        onPress={() => onItemPressed(item)}
+        text="다음"
+        fontSize={16}
+        bgColor="#363636"
+        width='100%'
+        height={50}
+      />
             </View>
             <StatusBar style='auto' />
         </View>
@@ -62,6 +119,8 @@ export default function SubscribeDetails( ) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
+        height: '100%',
     },
     header: {
         width: '100%',
@@ -73,74 +132,113 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
     },
+    buttonBackStyle: {
+        backgroundColor: '#C4C4C4',
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        marginRight: 13,
+    },
     buttonImageIconStyle: {
-        width: 23,
-        height: 23,
+        width: 20,
+        height: 20,
+    },
+    main_layout: {
+        width: '100%',
+        height: '89%',
+        alignSelf:'stretch',
+        backgroundColor: '#fff',
+        padding:'5%',
     },
     title: {
         fontSize: 20,
+        color: '#363636',
     },
-    item_img_layout: {
+    subtitle: {
+        fontSize: 17,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        color: '#363636',
+    },
+    days_layout: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        borderBottomWidth: 30,
+        borderColor: '#fff',
+    },
+    days_button: {
+        width: 40,
+        height: 55,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 18,
+        borderWidth: 1,
+        borderColor: '#E5E5E5',
         backgroundColor: '#fff',
-        height: 250,
+    },
+    meals_layout: {
+        flexDirection: 'row',
+        borderBottomWidth: 30,
+        borderColor: '#fff',
+    },
+    meals_button: {
+        width: 80,
+        height: 35,
+        justifyContent: 'center',
+        marginRight: 7,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#E5E5E5',
+        backgroundColor: '#fff',
+    },
+    like_styles_layout: {
+        flexDirection: 'column',
+        height: 255,
+        justifyContent: 'space-between',
         width: '100%',
     },
-    item_img: {
+    like_styles_img: {
         width: '100%',
-        height: 250,
+        height: 80,
         resizeMode: 'contain',
-        alignItems: 'center',
     },
-    item_explain: {
-        width: '100%',
-        resizeMode: 'cover',
-        backgroundColor: '#fff',
-        paddingHorizontal: '5%',
-        marginVertical: 30,
-    },
-    recommended_items_layout: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        paddingBottom: 10,
-    },
-    recommended_img: {
-        width: 60,
-        height: 60,
-        borderRadius: 40,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        alignSelf: 'center',
-    },
-    items_info_layout: {
-        flexDirection: 'row',
-        width: '100%',
-        height: 'auto',
-        justifyContent: 'space-around',
-    },
-    items_info_title_container: {
-        flexDirection: 'row',
-        borderTopWidth: 2,
-        borderBottomWidth: 1,
-        borderColor: '#eee',
-        height: 45,
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        flex: 1,
-    },
-    items_info: {
-        padding: '5%', 
-    },
-    purchase_button: {
+    next_button: {
         width: '100%',
         height: 50,
         borderRadius: 15,
         justifyContent: 'center',
         marginVertical: 5,
+        color: '#363636',
     },
     button_font: {
         fontSize: 14,
-        color: '#fff',
-        fontWeight: 'bold',
+        color: '#000',
         alignSelf: 'center',
     },
+    footerStyle: {
+        width: '100%',
+        height: 100,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position:'absolute',
+        bottom: 0,
+        paddingHorizontal: '5%',
+        paddingVertical: 10,
+      },
+      buttonBackStyle: {
+        backgroundColor: '#C4C4C4',
+        width: 50,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        marginRight: 13,
+      },
+      buttonImageIconStyle: {
+        width: 20,
+        height: 20,
+      },
 });

@@ -142,6 +142,45 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         alignSelf: 'center',
     },
+    mypage_title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#363636',
+        marginBottom: 10,
+    },
+    mypage_info_layout: {
+        flexDirection: 'row',
+        borderColor: '#F1F1F1',
+        borderWidth: 1,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        width: '100%',
+        height: 80,
+        borderRadius: 10,
+        marginBottom: 20,
+    },
+    mypage_info: {
+        flex: 1,
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRightColor: '#F1F1F1',
+    },
+    mypage_info_font: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#AAAAAA',
+    },
+    mypage_button: {
+        width: '100%',
+        height: 30,
+        justifyContent: 'center',
+        marginBottom: 1,
+    },
+    mypage_button_font: {
+        fontSize: 14,
+        color: '#363636',
+    },
 });
 
 export default styles;

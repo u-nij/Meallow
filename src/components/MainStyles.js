@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     layout_title: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: "#bbb",
+        color: "#B8B8B8",
         borderBottomWidth: self.width,
     },
     image_wrapper: {
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         width: 160,
         overflow: 'hidden',
         borderRadius: 10,
-        backgroundColor: 'coral',
+        backgroundColor: '#FF9069',
         marginBottom: 5,
     },
     image_wrapper_vertical: {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         width: 150,
         overflow: 'hidden',
         borderRadius: 10,
-        backgroundColor: 'coral',
+        backgroundColor: '#FF9069',
         marginBottom: 5,
     },
     item_image: {
@@ -76,14 +76,13 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold',
         color: "#000",
-        marginTop: 5,
     },
     item_info_container: {
         flexDirection: 'row',
         marginTop: 3, 
     },
     item_info: {
-        fontSize: 12,
+        fontSize: 10,
         color: "#363636",
         marginRight: 5, 
     },
@@ -93,31 +92,37 @@ const styles = StyleSheet.create({
         marginHorizontal: '5%',
     },
     subscribe_font: {
-        fontSize: 14,
-        color: '#000',
+        fontSize: 16,
+        color: '#363636',
         marginBottom: 5,
     },
     subscribe_font2: {
-        fontSize: 20,
+        fontSize: 22,
         fontWeight: 'bold',
         color: '#000',
+        alignSelf: 'center',
+    },
+    subscribe_font3: {
+        fontSize: 14,
+        color: '#424D51',
+        marginTop: 10,
         alignSelf: 'center',
     },
     subscribe_price: {
         fontSize: 30,
         fontWeight: 'bold',
-        borderBottomWidth: 15,
+        borderTopWidth: 15,
 
+        borderTopColor: '#FFBCA5',
         position: 'absolute',
-        top: '80%',
+        top: '40%',
+        color: 'transparent',
     },
     subscribe_price2: {
         fontSize: 30,
         fontWeight: 'bold',
-        borderBottomWidth: 15,
-        borderBottomColor: '#FF9069',
+        bottom: '10%',
         color: '#000',
-        top: '0%'
     },
     subscribe_tmp: {
         marginTop: 20,
@@ -138,9 +143,48 @@ const styles = StyleSheet.create({
     },
     subscribe_start_button_font: {
         color: '#fff',
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: 'bold',
         alignSelf: 'center',
+    },
+    mypage_title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#363636',
+        marginBottom: 10,
+    },
+    mypage_info_layout: {
+        flexDirection: 'row',
+        borderColor: '#F1F1F1',
+        borderWidth: 1,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        width: '100%',
+        height: 80,
+        borderRadius: 10,
+        marginBottom: 20,
+    },
+    mypage_info: {
+        flex: 1,
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRightColor: '#F1F1F1',
+    },
+    mypage_info_font: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#AAAAAA',
+    },
+    mypage_button: {
+        width: '100%',
+        height: 30,
+        justifyContent: 'center',
+        marginBottom: 1,
+    },
+    mypage_button_font: {
+        fontSize: 14,
+        color: '#363636',
     },
 });
 

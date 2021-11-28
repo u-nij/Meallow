@@ -21,7 +21,7 @@ const best_items = [
     { name:'아침 샐러드', price:'12,000원', image:require('../../assets/example/mealkit_example_2.png')}
 ];
 
-export default function MainRecommended( {user_name} ) {
+export default function Home( {user_name} ) {
 
     const navigation = useNavigation();
     
@@ -45,13 +45,13 @@ export default function MainRecommended( {user_name} ) {
                 </TouchableOpacity>
             </ImageBackground>
 
-            <View style={{height: 5, backgroundColor: '#bbb'}}></View>
+            <View style={{height: 5, backgroundColor: '#F1F1F1'}}></View>
             
             <View style={styles.component_layout}>
                 <View style={{flexDirection: 'row'}}>
                     <TouchableOpacity activeOpacity={0.8}
                         onPress={() => {onRecommendedButton();}}>
-                        <Text style={[styles.layout_title, recommended && {color:'#000', borderBottomWidth: 2}]}> {'추천'} </Text>
+                        <Text style={[styles.layout_title, recommended && {color:'#000', borderBottomWidth: 3}]}> {'추천'} </Text>
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={0.8}
                         onPress={() => {onBestButton();}}>

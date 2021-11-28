@@ -15,11 +15,12 @@ import { createStackNavigator  } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
 export default function App() {
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MainRecommended" screenOptions={{headerShown: false}}>
-        <Stack.Screen name="MainRecommended">
-          {props => <MainLayout user_name={''} header footer recommended></MainLayout>}
+      <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Home">
+          {props => <MainLayout user_name={''} header footer home></MainLayout>}
         </Stack.Screen>
         <Stack.Screen name="SocialLogin" component={SocialLogin}></Stack.Screen>
         <Stack.Screen name="OnBoarding1" component={OnBoarding1}></Stack.Screen>

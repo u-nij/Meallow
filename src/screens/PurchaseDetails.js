@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Constants from 'expo-constants';
 import { StyleSheet, View, Image, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
@@ -16,8 +16,13 @@ const mealkit_example_2 = require('../../assets/example/mealkit_example_2.png');
 const mealkit_example_3 = require('../../assets/example/mealkit_example_3.png');
 const mealkit_example_4 = require('../../assets/example/mealkit_example_4.png');
 
-const mealkits_examples = [ mealkit_example_1, mealkit_example_2, mealkit_example_3, mealkit_example_4 ];
-const item_infos = {
+const mealkits_examples = [
+    {name:'example1', img:mealkit_example_1, navigation:''},
+    {name:'example2', img:mealkit_example_2, navigation:''},
+    {name:'example3', img:mealkit_example_3, navigation:''},
+    {name:'example4', img:mealkit_example_4, navigation:''}
+]
+const item = {
     name: '고소한 수육 밀키트',
     introduction: '육식 집밥러들을 위한 간단한 밀키트 박스',
     price: '18,900원 ~',
@@ -26,106 +31,107 @@ const item_infos = {
     explain: '한끼 든든하게 먹기 좋은 담백한 수육. 남녀노소 모두가 좋아하는 반찬, 수육. 이번엔 색다르게 된장 양념을 이용한 한돈 된장수육을 준비했어요. 구수하게 단맛 나는 된장 양념이 고기에 스며들어 특유의 잡내는 줄이고 더욱 부드러워진 식감을 자랑합니다. 조리하실 땐 양념이 쉽게 탈 수 있어 물을 조금 넣고 볶으시면 더욱 맛있게 드실 수 있어요.\n 된장 특유의 구수한 맛이 쏙쏙 베어 있고 한끼 반찬으로 먹기에 든든하게 구성되어 있어요.'
 };
 
-export default function PurchaseDetails( {content, item=item_infos} ) {
+export default function PurchaseDetails() {
+
     const navigation = useNavigation();
     
-    const title = '구매';
     let recommended_items = mealkits_examples;
-    let review_count = 0;
 
-    let output, item_info_font;
-    switch (content) {
-        case 'information':
-            output = item.information == '' ? '아직 등록된 정보가 없어요' : item.information;
-            break;
-        case 'review':
-            output = item.review == '' ? '아직 등록된 정보가 없어요' : item.review;
-            break;
-        case 'output':
-            content = item.explain == '' ? '아직 등록된 정보가 없어요' : item.explain;
-            break;
-    }
+    const [output, setOutput] = useState(item.information == '' ? '아직 등록된 정보가 없어요' : item.information);
+    
+    let item_info_font;
     if (output == '아직 등록된 정보가 없어요') {
-        item_info_font = {fontSize: 12, color: '#555', lineHeight: 18};
+        item_info_font = {fontSize: 14, color: '#AAAAAA', lineHeight: 20, alignSelf: 'center', paddingVertical: 50};
     } else {
-        item_info_font = {fontSize: 12, color: '#000', lineHeight: 18};
+        item_info_font = {fontSize: 14, color: '#363636', lineHeight: 20};
     }
-    const active_info_title_style = [styles.items_info_title_container, {borderBottomColor: '#777'}];
+
+    let review_count = 0;
+    const item_informations = [
+        {id:0, type:'information', title:'상품정보'}, 
+        {id:1, type:'review', title:'리뷰 ' + review_count}, 
+        {id:2, type:'explain', title:'상품설명'}, 
+    ];
+
+    const [pressed, setPressed] = useState([true, false, false]);
+
+    const onButtonInfo = (id) => {
+        const pressedId = item_informations.filter(item_informations => item_informations.id == id)[0].id;
+        setPressed([0 === pressedId, 1 === pressedId, 2 === pressedId]);
+        switch (id) {
+            case 0:
+                setOutput(item.information == '' ? '아직 등록된 정보가 없어요' : item.information);
+                break;
+            case 1:
+                setOutput(item.review == '' ? '아직 등록된 정보가 없어요' : item.review);
+                break;
+            case 2:
+                setOutput(item.explain == '' ? '아직 등록된 정보가 없어요' : item.explain);
+                break;
+        }
+    };
 
     const [scrap, setScrap] = useState(false);
     const onButtonScrap = () => {
         setScrap(!scrap);
     };
-
-    const [clickedInfo, setClickedInfo] = useState([
-       'information', 'review', 'explain'
-    ]);
-    const onButtonInfo = (id) => {
-        content = clickedInfo[id];
-    };
-
+    
     return (
         <View stlye={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.buttonBackStyle} onPress={() => {navigation.goBack();}} activeOpacity={0.7}>
-                    <Image source={arrow_back} style={styles.buttonImageIconStyle}/>
+                <TouchableOpacity style={{width:20, height:20}} onPress={() => {navigation.goBack();}} activeOpacity={0.7}>
+                    <Image source={arrow_back} style={{width:20, height:20}}/>
                 </TouchableOpacity>
-                {title && <Text style={styles.title}>{title}</Text>}
-                <TouchableOpacity style={styles.buttonBackStyle} onPress={() => {alert('장바구니 페이지로 이동합니다.');}} activeOpacity={0.7}>
-                    <Image source={basket} style={styles.buttonImageIconStyle}/>
+                <Text style={styles.title}>구매</Text>
+                <TouchableOpacity style={{width:23, height:23}} onPress={() => {alert('장바구니 페이지로 이동합니다.');}} activeOpacity={0.7}>
+                    <Image source={basket} style={{width:23, height:23}}/>
                 </TouchableOpacity>
             </View>
 
-            <ScrollView style={{width: '100%', backgroundColor:'#fff'}}>
+            <ScrollView style={{width: '100%', height:'70%', backgroundColor:'#fff'}}>
                 <View style={styles.item_img_layout}>
                     <Image style={styles.item_img} source={mealkit_img} />
                 </View>
                 <View style={styles.item_explain}>
                     <View style={{flexDirection:'row'}}>
-                        <Text style={{fontSize: 16, fontWeight: 'bold', paddingBottom: 5}}>{item.name}</Text>
-                        <TouchableOpacity style={[styles.buttonBackStyle, {position:'absolute', right:5}]} activeOpacity={0.9}
+                        <Text style={{fontSize: 18, fontWeight: 'bold', paddingBottom: 5}}>{item.name}</Text>
+                        <TouchableOpacity style={{width: 20, height:20, position:'absolute', right:5}} activeOpacity={0.9}
                             onPress={() => {onButtonScrap();}}>
-                            <Image source={scrap ? scrap_img_active : scrap_img} style={styles.buttonImageIconStyle}/>
+                            <Image source={scrap ? scrap_img_active : scrap_img} style={{width: 20, height:20}}/>
                         </TouchableOpacity>
                     </View>
-                    <Text style={{fontSize: 10, color: '#999', paddingBottom: 15}}>{item.introduction}</Text>
-                    <Text style={{fontSize: 14, fontWeight: 'bold', paddingBottom: 10}}>{item.price}</Text>
-                    <View style={{borderWidth: 0.5, borderColor: '#bbb', marginBottom: 10}} />
-                    <Text style={{fontSize: 14, fontWeight: 'bold', paddingBottom: 10}}>같은 식단에 넣으면 좋은 밀키트</Text>
+                    <Text style={{fontSize: 12, color: '#747474', paddingBottom: 15}}>{item.introduction}</Text>
+                    <Text style={{fontSize: 16, fontWeight: 'bold', paddingBottom: 17}}>{item.price}</Text>
+                    <View style={{borderWidth: 1, borderColor: '#E5E5E5'}} />
+                    <Text style={{fontSize: 16, color: '#363636', fontWeight: 'bold', paddingVertical: 20}}>같은 식단에 넣으면 좋은 밀키트</Text>
                     <View style={styles.recommended_items_layout}>
                         {recommended_items.map((item) => (
-                            <Image key={item} style={styles.recommended_img} source={item} />
+                            <TouchableOpacity key={item.name} style={styles.recommended_img_wrapper} activeOpacity={0.9}>
+                                <Image style={styles.recommended_img} source={item.img} />
+                            </TouchableOpacity>
                         ))}
                     </View>
                 </View>
                 <View style={styles.items_info_layout}>
-                    <View style={content == 'information' ? active_info_title_style : styles.items_info_title_container}>
-                        <TouchableOpacity activeOpacity={0.8} onPress={() => {onButtonInfo(0);}}>
-                            <Text style={content == 'information' ? {fontSize: 12, color: '#000', fontWeight: 'bold'} : {fontSize: 12, color: '#999'}}> {'상품정보'} </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={content == 'review' ? active_info_title_style : styles.items_info_title_container}>
-                        <TouchableOpacity activeOpacity={0.8} onPress={() => {onButtonInfo(1);}}>
-                            <Text style={content == 'review' ? {fontSize: 12, color: '#000', fontWeight: 'bold'} : {fontSize: 12, color: '#999'}}> {'리뷰'} {review_count} </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={content == 'explain' ? active_info_title_style : styles.items_info_title_container}>
-                        <TouchableOpacity activeOpacity={0.8} onPress={() => {onButtonInfo(2);}}>
-                            <Text style={content == 'explain' ? {fontSize: 12, color: '#000', fontWeight: 'bold'} : {fontSize: 12, color: '#999'}}> {'상품설명'} </Text>
-                        </TouchableOpacity>
-                    </View>
+                    {item_informations.map((item) => (
+                        <View key={item.id} style={pressed[item.id] ? [styles.items_info_title_container, {borderBottomColor: '#777'}] : styles.items_info_title_container}>
+                            <TouchableOpacity activeOpacity={0.8} onPress={() => onButtonInfo(item.id)}>
+                                <Text style={pressed[item.id] ? {fontSize: 14, color: '#000', fontWeight: 'bold'} : {fontSize: 14, color: '#aaaaaa'}}> {item.title} </Text>
+                            </TouchableOpacity>
+                        </View>
+                    ))}
                 </View>
                 <View style={styles.items_info}>
                     <Text style={item_info_font}>{output}</Text>
                 </View>
             </ScrollView>
 
-            <View style={{width:'100%', height: '50%', backgroundColor: '#fff', alignItems: 'center', paddingHorizontal: '5%', paddingVertical: 10}}>
-                <TouchableOpacity TouchableOpacity style={[styles.purchase_button, {backgroundColor: '#000'}]}
+            <View style={styles.footer}>
+                <TouchableOpacity TouchableOpacity style={[styles.purchase_button, {backgroundColor: '#363636'}]}
                     onPress={() => navigation.navigate('Purchase')} activeOpacity={0.7}>
                     <Text style={styles.button_font}>상품 구매하기</Text>
                 </TouchableOpacity>
-                <TouchableOpacity TouchableOpacity style={[styles.purchase_button, {backgroundColor: 'coral'}]}
+                <TouchableOpacity TouchableOpacity style={[styles.purchase_button, {backgroundColor: '#FF9069'}]}
                     onPress={() => {}} activeOpacity={0.7}>
                     <Text style={styles.button_font}>밀키트 구독하기</Text>
                 </TouchableOpacity>
@@ -139,6 +145,7 @@ export default function PurchaseDetails( {content, item=item_infos} ) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        height: '100%',
     },
     header: {
         width: '100%',
@@ -155,7 +162,9 @@ const styles = StyleSheet.create({
         height: 23,
     },
     title: {
-        fontSize: 20,
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#363636',
     },
     item_img_layout: {
         backgroundColor: '#fff',
@@ -180,6 +189,14 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         paddingBottom: 10,
     },
+    recommended_img_wrapper: {
+        width: 60,
+        height: 60,
+        borderRadius: 40,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        alignSelf: 'center',
+    },
     recommended_img: {
         width: 60,
         height: 60,
@@ -196,7 +213,7 @@ const styles = StyleSheet.create({
     },
     items_info_title_container: {
         flexDirection: 'row',
-        borderTopWidth: 2,
+        borderTopWidth: 5,
         borderBottomWidth: 1,
         borderColor: '#eee',
         height: 45,
@@ -212,12 +229,20 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 15,
         justifyContent: 'center',
-        marginVertical: 5,
     },
     button_font: {
-        fontSize: 14,
+        fontSize: 19,
         color: '#fff',
         fontWeight: 'bold',
         alignSelf: 'center',
     },
+    footer: {
+        width: '100%',
+        height: 150,
+        paddingHorizontal: '5%',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        alignSelf: 'center',
+        backgroundColor:'#fff',
+      },
 });

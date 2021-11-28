@@ -5,12 +5,12 @@ import { StyleSheet, View } from 'react-native';
 
 import Header from './Header';
 import Footer from './Footer';
-import MainRecommended from '../screens/MainRecommended';
+import Home from '../screens/Home';
 import Recipe from '../screens/Recipe';
 import Subscribe from '../screens/Subscribe';
 import MyPage from '../screens/MyPage';
 
-const MainLayout = ( {user_name, header, footer, recommended, recipe, subscribe, mypage} ) => {
+const MainLayout = ( {user_name, header, footer, home, recipe, subscribe, mypage} ) => {
     
     let title = null;
     let menu = '';
@@ -20,7 +20,7 @@ const MainLayout = ( {user_name, header, footer, recommended, recipe, subscribe,
     } else if (subscribe) {
         title = 'My 구독';
         menu = 'subscribe';
-    } else if (recommended) {
+    } else if (home) {
         menu = 'home';
     } else if (mypage) {
         title = '마이페이지';
@@ -31,7 +31,7 @@ const MainLayout = ( {user_name, header, footer, recommended, recipe, subscribe,
         <View style={styles.container}>
             <StatusBar style='auto' />
             {header && <Header title={title}/>}
-            {recommended && <MainRecommended user_name={user_name} />}
+            {home && <Home user_name={user_name} />}
             {recipe && <Recipe />}
             {subscribe && <Subscribe />}
             {mypage && <MyPage />}

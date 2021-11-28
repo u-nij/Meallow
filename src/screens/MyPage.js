@@ -36,6 +36,7 @@ export default function MyPage( {user_name} ) {
                 <View style={styles.mypage_info_layout}>
                     {informations.map((info) => (
                         <TouchableOpacity
+                            key={info.name}
                             style={[styles.mypage_info, info.name == 'writing_review' ? {borderRightWidth:0} : {borderRightWidth:1}]}
                             activeOpacity={0.7}>
                             <Text style={styles.mypage_info_font}>{info.title}</Text>

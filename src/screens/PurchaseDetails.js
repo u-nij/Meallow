@@ -18,9 +18,9 @@ const mealkit_example_4 = require('../../assets/example/mealkit_example_4.png');
 
 const mealkits_examples = [
     {name:'example1', img:mealkit_example_1, navigation:''},
-    {name:'example1', img:mealkit_example_2, navigation:''},
-    {name:'example1', img:mealkit_example_3, navigation:''},
-    {name:'example1', img:mealkit_example_4, navigation:''}
+    {name:'example2', img:mealkit_example_2, navigation:''},
+    {name:'example3', img:mealkit_example_3, navigation:''},
+    {name:'example4', img:mealkit_example_4, navigation:''}
 ]
 const item = {
     name: '고소한 수육 밀키트',
@@ -106,17 +106,17 @@ export default function PurchaseDetails() {
                     <Text style={{fontSize: 16, color: '#363636', fontWeight: 'bold', paddingVertical: 20}}>같은 식단에 넣으면 좋은 밀키트</Text>
                     <View style={styles.recommended_items_layout}>
                         {recommended_items.map((item) => (
-                            <TouchableOpacity style={styles.recommended_img_wrapper} activeOpacity={0.9}>
-                                <Image style={styles.recommended_img} source={item.img} />
+                            <TouchableOpacity key={item.name} style={styles.recommended_img_wrapper} activeOpacity={0.9}>
+                                <Image key={item.img} style={styles.recommended_img} source={item.img} />
                             </TouchableOpacity>
                         ))}
                     </View>
                 </View>
                 <View style={styles.items_info_layout}>
                     {item_informations.map((item) => (
-                        <View style={pressed[item.id] ? [styles.items_info_title_container, {borderBottomColor: '#777'}] : styles.items_info_title_container}>
-                            <TouchableOpacity activeOpacity={0.8} onPress={() => onButtonInfo(item.id)}>
-                                <Text style={pressed[item.id] ? {fontSize: 14, color: '#000', fontWeight: 'bold'} : {fontSize: 14, color: '#aaaaaa'}}> {item.title} </Text>
+                        <View key={item.type} style={pressed[item.id] ? [styles.items_info_title_container, {borderBottomColor: '#777'}] : styles.items_info_title_container}>
+                            <TouchableOpacity key={item.id} activeOpacity={0.8} onPress={() => onButtonInfo(item.id)}>
+                                <Text key={item.title} style={pressed[item.id] ? {fontSize: 14, color: '#000', fontWeight: 'bold'} : {fontSize: 14, color: '#aaaaaa'}}> {item.title} </Text>
                             </TouchableOpacity>
                         </View>
                     ))}
